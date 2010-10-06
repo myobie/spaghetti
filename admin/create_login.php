@@ -26,7 +26,6 @@ $user = $user_result->fetch_assoc();
 
 session_start();
 $_SESSION["user_id"] = $user["id"];
-$_SESSION["user_token"] = $user["token"];
 
 header("Location: index.php");
 
