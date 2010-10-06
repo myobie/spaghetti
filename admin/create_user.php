@@ -24,13 +24,11 @@ $name = $_POST["user"]["name"];
 $email = $_POST["user"]["email"];
 $password = $_POST["user"]["password"];
 $salt = md5(date(DATE_ATOM) . $email);
-$token = md5(date(DATE_ATOM) . $token);
 
 $result = $db->query("insert into users set name = '$name', 
   email = '$email', 
   password = '$password',
-  salt = '$salt',
-  token = '$token'");
+  salt = '$salt'");
 $id = $db->insert_id;
 
 header("Location: edit_user.php?id=$id");
