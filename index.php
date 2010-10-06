@@ -1,4 +1,3 @@
-<!doctype html>
 <?php
 
 error_reporting(-1);
@@ -16,6 +15,7 @@ function comments_count($post_id) {
 }
 
 ?>
+<!doctype html>
 <html>
   <head>
     <title>The Blog</title>
@@ -27,6 +27,10 @@ function comments_count($post_id) {
           <li><a href="archive.php">Archive</a></li>
         </ul>
       </nav>
+
+      <?php if (isset($_GET["message"])) { ?>
+        <p><?php echo stripslashes(urldecode($_GET["message"])) ?></p>
+      <?php } ?>
     </header>
 
     <section id="posts">
