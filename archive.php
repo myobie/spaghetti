@@ -5,7 +5,7 @@ error_reporting(-1);
 ini_set("display_errors", 1);
 require_once("lib/db.php");
 
-$posts_result = $db->query("select * from posts order by id DESC limit 3");
+$posts_result = $db->query("select * from posts order by id DESC");
 
 function comments_count($post_id) {
   global $db;
@@ -22,15 +22,10 @@ function comments_count($post_id) {
   </head>
   <body>
     <header>
-      <nav>
-        <ul>
-          <li><a href="archive.php">Archive</a></li>
-        </ul>
-      </nav>
     </header>
 
     <section id="posts">
-      <h1>Recent blog posts</h1>
+      <h1>Archive of all posts</h1>
     
       <?php while ($post = $posts_result->fetch_assoc()) { ?>
         <article>
@@ -41,7 +36,6 @@ function comments_count($post_id) {
               </a>
             </h1>
           </header>
-          <?php echo $post["body_rendered"] ?>
           <footer>
             <p>
               <?php echo comments_count($post["id"]); ?> comments
@@ -53,3 +47,4 @@ function comments_count($post_id) {
 
   </body>
 </html>
+
