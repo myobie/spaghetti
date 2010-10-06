@@ -27,6 +27,24 @@ $result = $db->query("insert into comments set post_id = '$post_id',
   body = '$body',
   body_rendered = '$body_rendered'");
 
-header("Location: post.php?id=$post_id");
+
+
+if (isset($_SERVER["HTTP_X_REQUESTED_WITH"]) && 
+    $_SERVER["HTTP_X_REQUESTED_WITH"] == "XMLHttpRequest") {
+    
+  // javascript 
+  
+  echo "<article>";
+  echo "<h1>$name said:</h1>";
+  echo $body_rendered;
+  echo "</article>";
+  
+} else {
+  
+  // html
+  
+  header("Location: post.php?id=$post_id");
+  
+}
 
 ?>
