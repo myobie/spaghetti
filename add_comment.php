@@ -2,14 +2,20 @@
 
 require_once("lib/db.php");
 require_once("lib/markdown.php");
+session_start();
 
 // Validation
-if (! (isset($_POST["comment"]) || 
-  isset($_POST["comment"]["post_id"]) || 
-  isset($_POST["comment"]["name"]) || 
-  isset($_POST["comment"]["email"]))) {
+if (! (isset($_POST["comment"]) && 
+  isset($_POST["comment"]["post_id"]) &&
+  isset($_POST["comment"]["name"]) && 
+  isset($_POST["comment"]["email"]) &&
+  isset($_SESSION["token"]) && 
+  isset($_POST["token"]) &&
+  $_SESSION["token"] == $_POST["token"])) {
 
-    header("Location: index.php");
+    $message = urlencode("Couldn't add your comment.");
+    header("Location: index.php?message=$message");
+    exit();
 
 }
 

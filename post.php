@@ -1,6 +1,7 @@
 <?php
 
 require_once("lib/db.php");
+session_start();
 
 $post_id = $_GET["id"];
 $post_result = $db->query("select * from posts where id = '$post_id'");
@@ -50,6 +51,8 @@ function comments_result($post_id) {
 
             <form action="add_comment.php" method="post">
               <h1>Add a comment</h1>
+              <?php $_SESSION["token"] = $token = md5(date(DATE_ATOM)) ?>
+              <input type="hidden" name="token" value="<?php echo $token ?>">
               <input type="hidden" name="comment[post_id]" value="<?php echo $post["id"] ?>">
               <p>
                 <label for="comment_name">Name:</label>
