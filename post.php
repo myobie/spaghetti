@@ -48,9 +48,10 @@ function comments_result($post_id) {
               </article>
             <?php } ?>
 
-            <form action="add_comment.php" method="post">
+            <form id="add_comment_form" action="add_comment.php" method="post">
               <h1>Add a comment</h1>
-              <input type="hidden" name="comment[post_id]" value="<?php echo $post["id"] ?>">
+              <input type="hidden" id="comment_post_id" 
+                     name="comment[post_id]" value="<?php echo $post["id"] ?>">
               <p>
                 <label for="comment_name">Name:</label>
                 <input type="text" name="comment[name]" id="comment_name">
@@ -72,6 +73,32 @@ function comments_result($post_id) {
         </article>
     </section>
 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script>
+      $("#add_comment_form").submit(function() {
+        var url = "add_comment.php";
+        var params = {
+          comment: {
+            post_id: $("#comment_post_id").val(),
+            name: $("#comment_name").val(),
+            email: $("#comment_email").val(),
+            body: $("#comment_body").val()
+          }
+        };
+        var func = function(data) {
+          $(data).insertBefore('#add_comment_form').hide().slideDown();
+          $("#comment_name").val("");
+          $("#comment_email").val("");
+          $("#comment_body").val("");
+        };
+        
+        $.post(url, params, func);
+        
+        return false; // stops the form from submitting
+      });
+    
+      
+    </script>
   </body>
 </html>
 
