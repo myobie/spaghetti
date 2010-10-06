@@ -32,11 +32,11 @@ $users_result = $db->query("select * from users order by email ASC");
       <form action="create_user.php" action="post">
         <p>
           <label for="user_name">Name:</label>
-          <input type="text" name="user[name]" id="user_name" value="<?php echo $user["name"] ?>">
+          <input type="text" name="user[name]" id="user_name">
         </p>
         <p>
           <label for="user_email">Email:</label>
-          <input type="text" name="user[email]" id="user_email" value="<?php echo $user["email"] ?>">
+          <input type="text" name="user[email]" id="user_email">
         </p>
         <p>
           <label for="user_password">Password:</label>
