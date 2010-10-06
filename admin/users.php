@@ -29,7 +29,7 @@ $users_result = $db->query("select * from users order by email ASC");
 
     <section id="create_user">
       <h1>Create a new user</h1>
-      <form action="create_user.php" action="post">
+      <form action="create_user.php" method="post">
         <p>
           <label for="user_name">Name:</label>
           <input type="text" name="user[name]" id="user_name">
@@ -47,7 +47,7 @@ $users_result = $db->query("select * from users order by email ASC");
           <input type="text" name="user[password_confirmation]" id="user_password_confirmation">
         </p>
         <p>
-          <button type="submit">Update user</button>
+          <button type="submit">Create user</button>
         </p>
       </form>
     </section>
