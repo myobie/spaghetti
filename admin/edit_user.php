@@ -5,7 +5,7 @@ require_once("../lib/admin_helpers.php");
 
 require_login();
 
-$id = $_GET["id"];
+$id = $db->real_escape_string($_GET["id"]);
 $user_result = $db->query("select * from users where id = '$id'");
 $user = $user_result->fetch_assoc();
 

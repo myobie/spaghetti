@@ -5,7 +5,7 @@ require_once("../lib/admin_helpers.php");
 
 require_login();
 
-$id = $_GET["id"];
+$id = $db->real_escape_string($_GET["id"]);
 $post_result = $db->query("select * from posts where id = '$id'");
 $post = $post_result->fetch_assoc();
 

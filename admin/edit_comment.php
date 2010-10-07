@@ -5,7 +5,7 @@ require_once("../lib/admin_helpers.php");
 
 require_login();
 
-$id = $_GET["id"];
+$id = $db->real_escape_string($_GET["id"]);
 $comment_result = $db->query("select * from comments where id = '$id'");
 $comment = $comment_result->fetch_assoc();
 
