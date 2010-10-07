@@ -1,6 +1,7 @@
 <?php
 
 require_once("../lib/db.php");
+@session_start();
 
 ?>
 <!doctype html>
@@ -12,6 +13,8 @@ require_once("../lib/db.php");
 
     <section id="login">
       <form action="create_login.php" method="post">
+        <?php $_SESSION["token"] = md5(date(DATE_ATOM)) ?>
+        <input type="hidden" name="token" value="<?php echo $_SESSION["token"] ?>">
         <h1>Login</h1>
         <?php if (isset($login_error)) { ?>
           <p>Sorry, there was an error with your email and/or password. Try again.</p>

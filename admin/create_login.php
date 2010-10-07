@@ -6,8 +6,21 @@ function reload_login_form() {
   exit();
 }
 
+session_start();
+
+var_dump($_SESSION["token"]);
+var_dump($_POST["token"]);
+
+var_dump((isset($_POST["email"]) && 
+  isset($_POST["password"]) && 
+  isset($_POST["token"]) &&
+  $_SESSION["token"] == $_POST["token"]));
+
 // Validation
-if (! (isset($_POST["email"]) && isset($_POST["password"]))) {
+if (! (isset($_POST["email"]) && 
+  isset($_POST["password"]) && 
+  isset($_POST["token"]) &&
+  $_SESSION["token"] == $_POST["token"])) {
   reload_login_form();
 }
 
