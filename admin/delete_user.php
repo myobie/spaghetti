@@ -13,7 +13,7 @@ if (! isset($_POST["id"])) {
 
 }
 
-$id = $_POST["id"];
+$id = $db->real_escape_string($_POST["id"]);
 
 $result = $db->query("delete from users where id = '$id'");
 
