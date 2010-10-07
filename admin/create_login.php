@@ -13,8 +13,8 @@ if (! (isset($_POST["email"]) && isset($_POST["password"]))) {
 
 require_once("../lib/db.php");
 
-$email = $_POST["email"];
-$password = $_POST["password"];
+$email = $db->real_escape_string($_POST["email"]);
+$password = $db->real_escape_string($_POST["password"]);
 
 $user_result = $db->query("select * from users where email = '$email' and password = '$password'");
 
