@@ -1,8 +1,6 @@
 <!doctype html>
 <?php
 
-error_reporting(-1);
-ini_set("display_errors", 1);
 require_once("lib/db.php");
 
 $posts_result = $db->query("select * from posts order by id DESC");
