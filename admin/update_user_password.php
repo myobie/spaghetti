@@ -17,8 +17,8 @@ if (! (isset($_POST["user"]) &&
 
 }
 
-$id = $_POST["user"]["id"];
-$password = $_POST["user"]["password"];
+$id = $db->real_escape_string($_POST["user"]["id"]);
+$password = $db->real_escape_string($_POST["user"]["password"]);
 
 $result = $db->query("update users set password = '$password' where id = '$id'");
 

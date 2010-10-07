@@ -16,9 +16,9 @@ if (! (isset($_POST["user"]) &&
 
 }
 
-$id = $_POST["user"]["id"];
-$name = $_POST["user"]["name"];
-$email = $_POST["user"]["email"];
+$id = $db->real_escape_string($_POST["user"]["id"]);
+$name = $db->real_escape_string($_POST["user"]["name"]);
+$email = $db->real_escape_string($_POST["user"]["email"]);
 
 $result = $db->query("update users set name = '$name', 
   email = '$email' 
