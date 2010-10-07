@@ -30,8 +30,8 @@ $user = $user_result->fetch_assoc();
 
     <section id="edit_user">
       <form action="update_user.php" method="post">
-        <?php $_SESSION["token"] = $token = md5(date(DATE_ATOM)) ?>
-        <input type="hidden" name="token" value="<?php echo $token ?>">
+        <?php $_SESSION["token"] = md5(date(DATE_ATOM)) ?>
+        <input type="hidden" name="token" value="<?php echo $_SESSION["token"] ?>">
         <h1>Editing <?php echo $user["email"] ?></h1>
         <?php if (isset($_GET["updated"])) { ?>
           <p>Updated successfully.</p>
@@ -53,8 +53,7 @@ $user = $user_result->fetch_assoc();
     <hr>
     <section id="edit_user_password">
       <form action="update_user_password.php" method="post">
-        <?php $_SESSION["token"] = $token = md5(date(DATE_ATOM)) ?>
-        <input type="hidden" name="token" value="<?php echo $token ?>">
+        <input type="hidden" name="token" value="<?php echo $_SESSION["token"] ?>">
         <h1>Change <?php echo $user["email"] ?>'s password</h1>
         <?php if (isset($_GET["updated_password"])) { ?>
           <p>Updated successfully.</p>
@@ -79,8 +78,7 @@ $user = $user_result->fetch_assoc();
     <hr>
     <section id="delete_user">
       <form action="delete_user.php" method="post" id="delete_form">
-        <?php $_SESSION["token"] = $token = md5(date(DATE_ATOM)) ?>
-        <input type="hidden" name="token" value="<?php echo $token ?>">
+        <input type="hidden" name="token" value="<?php echo $_SESSION["token"] ?>">
         <input type="hidden" name="id" value="<?php echo $user["id"] ?>">
         <button type="submit">Delete this user</button>
       </form>

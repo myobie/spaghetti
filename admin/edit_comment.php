@@ -30,8 +30,8 @@ $comment = $comment_result->fetch_assoc();
 
     <section id="edit_comment">
       <form action="update_comment.php" method="post">
-        <?php $_SESSION["token"] = $token = md5(date(DATE_ATOM)) ?>
-        <input type="hidden" name="token" value="<?php echo $token ?>">
+        <?php $_SESSION["token"] = md5(date(DATE_ATOM)) ?>
+        <input type="hidden" name="token" value="<?php echo $_SESSION["token"] ?>">
 
         <h1>Editing <?php echo $comment["name"] ?> - <?php echo $comment["email"] ?> - Post: <?php echo $comment["post_id"] ?></h1>
         <?php if (isset($_GET["updated"])) { ?>
@@ -59,8 +59,7 @@ $comment = $comment_result->fetch_assoc();
     <hr>
     <section id="delete_comment">
       <form action="delete_comment.php" method="post" id="delete_form">
-        <?php $_SESSION["token"] = $token = md5(date(DATE_ATOM)) ?>
-        <input type="hidden" name="token" value="<?php echo $token ?>">
+        <input type="hidden" name="token" value="<?php echo $_SESSION["token"] ?>">
         <input type="hidden" name="id" value="<?php echo $comment["id"] ?>">
         <button type="submit">Delete this comment</button>
       </form>
