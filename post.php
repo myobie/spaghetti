@@ -53,7 +53,7 @@ function comments_result($post_id) {
 
             <form action="add_comment.php" method="post">
               <h1>Add a comment</h1>
-              <?php $_SESSION["token"] = $token = md5(date(DATE_ATOM)) ?>
+              <?php $_SESSION["token"] = $token = md5(date(DATE_ATOM)."--".mt_rand(1,9999)."--secret") ?>
               <input type="hidden" name="token" value="<?php echo $token ?>">
               <input type="hidden" name="comment[post_id]" value="<?php echo $post["id"] ?>">
               <p>

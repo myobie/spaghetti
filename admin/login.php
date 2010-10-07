@@ -13,7 +13,7 @@ require_once("../lib/db.php");
 
     <section id="login">
       <form action="create_login.php" method="post">
-        <?php $_SESSION["token"] = md5(date(DATE_ATOM)) ?>
+        <?php $_SESSION["token"] = md5(date(DATE_ATOM)."--".mt_rand(1,9999)."--secret") ?>
         <input type="hidden" name="token" value="<?php echo $_SESSION["token"] ?>">
         <h1>Login</h1>
         <?php if (isset($login_error)) { ?>

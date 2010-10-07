@@ -30,7 +30,7 @@ $post = $post_result->fetch_assoc();
 
     <section id="edit_post">
       <form action="update_post.php" method="post">
-        <?php $_SESSION["token"] = md5(date(DATE_ATOM)) ?>
+        <?php $_SESSION["token"] = md5(date(DATE_ATOM)."--".mt_rand(1,9999)."--secret") ?>
         <input type="hidden" name="token" value="<?php echo $_SESSION["token"] ?>">
         <h1>Editing <?php echo $post["title"] ?> (#<?php echo $post["id"] ?>)</h1>
         <?php if (isset($_GET["updated"])) { ?>
