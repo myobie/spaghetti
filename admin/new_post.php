@@ -25,6 +25,8 @@ require_login();
 
     <section id="new_post">
       <form action="create_post.php" method="post">
+        <?php $_SESSION["token"] = $token = md5(date(DATE_ATOM)) ?>
+        <input type="hidden" name="token" value="<?php echo $token ?>">
         <h1>New Post</h1>
         <input type="hidden" name="post[user_id]" value="<?php echo $_SESSION["user_id"] ?>">
         <p>

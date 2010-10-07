@@ -7,10 +7,12 @@ require_once("../lib/admin_helpers.php");
 require_login();
 
 // Validation
-if (! (isset($_POST["post"]) || 
-  isset($_POST["post"]["user_id"]) || 
-  isset($_POST["post"]["title"]) || 
-  isset($_POST["post"]["body"]))) {
+if (! (isset($_POST["post"]) && 
+  isset($_POST["post"]["user_id"]) && 
+  isset($_POST["post"]["title"]) && 
+  isset($_POST["post"]["body"]) && 
+  isset($_POST["token"]) &&
+  $_SESSION["token"] == $_POST["token"])) {
 
     header("Location: index.php");
     exit();
