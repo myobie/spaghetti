@@ -9,7 +9,9 @@ require_login();
 if (! (isset($_POST["user"]) && 
   isset($_POST["user"]["password"]) && 
   isset($_POST["user"]["password_confirmation"]) && 
-  $_POST["user"]["password"] == $_POST["user"]["password_confirmation"])) {
+  $_POST["user"]["password"] == $_POST["user"]["password_confirmation"] && 
+  isset($_POST["token"]) &&
+  $_SESSION["token"] == $_POST["token"])) {
 
     $id = $_POST["user"]["id"];
     header("Location: edit_user.php?id=$id&password_error=true");
