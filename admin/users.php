@@ -28,6 +28,8 @@ $users_result = $db->query("select * from users order by email ASC");
     <section id="create_user">
       <h1>Create a new user</h1>
       <form action="create_user.php" method="post">
+        <?php $_SESSION["token"] = $token = md5(date(DATE_ATOM)) ?>
+        <input type="hidden" name="token" value="<?php echo $token ?>">
         <p>
           <label for="user_name">Name:</label>
           <input type="text" name="user[name]" id="user_name">

@@ -11,7 +11,9 @@ if (! (isset($_POST["user"]) &&
   isset($_POST["user"]["email"]) &&
   isset($_POST["user"]["password"]) && 
   isset($_POST["user"]["password_confirmation"]) && 
-  $_POST["user"]["password"] == $_POST["user"]["password_confirmation"])) {
+  $_POST["user"]["password"] == $_POST["user"]["password_confirmation"] && 
+  isset($_POST["token"]) &&
+  $_SESSION["token"] == $_POST["token"])) {
 
     header("Location: index.php");
     exit();
