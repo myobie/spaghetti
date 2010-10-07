@@ -13,6 +13,7 @@ if (! (isset($_POST["post"]) ||
   isset($_POST["post"]["body"]))) {
 
     header("Location: index.php");
+    exit();
 
 }
 
