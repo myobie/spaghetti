@@ -10,7 +10,7 @@ function require_login() {
     redirect_to_login();
   }
 
-  $id = $_SESSION["user_id"];
+  $id = $db->real_escape_string($_SESSION["user_id"]); // might as well, but escaping really shouldn't need to happen
 
   $user_result = $db->query("select * from users where id = '$id'");
 
