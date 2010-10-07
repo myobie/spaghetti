@@ -20,8 +20,8 @@ if (! (isset($_POST["user"]) &&
 
 }
 
-$name = $db->real_escape_string($_POST["user"]["name"]);
-$email = $db->real_escape_string($_POST["user"]["email"]);
+$name = htmlspecialchars($db->real_escape_string($_POST["user"]["name"]));
+$email = htmlspecialchars($db->real_escape_string($_POST["user"]["email"]));
 $password = $db->real_escape_string($_POST["user"]["password"]);
 $salt = md5(date(DATE_ATOM) . $email . "--my-secret--");
 

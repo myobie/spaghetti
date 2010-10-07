@@ -22,10 +22,10 @@ if (! (isset($_POST["comment"]) &&
 }
 
 $id = $db->real_escape_string($_POST["comment"]["id"]);
-$post_id = $db->real_escape_string($_POST["comment"]["post_id"]);
-$name = $db->real_escape_string($_POST["comment"]["name"]);
-$email = $db->real_escape_string($_POST["comment"]["email"]);
-$body = $db->real_escape_string($_POST["comment"]["body"]);
+$post_id = htmlspecialchars($db->real_escape_string($_POST["comment"]["post_id"]));
+$name = htmlspecialchars($db->real_escape_string($_POST["comment"]["name"]));
+$email = htmlspecialchars($db->real_escape_string($_POST["comment"]["email"]));
+$body = htmlspecialchars($db->real_escape_string($_POST["comment"]["body"]));
 $body_rendered = Markdown($body);
 
 $result = $db->query("update comments set post_id = '$post_id', 
