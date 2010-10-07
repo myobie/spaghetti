@@ -9,7 +9,9 @@ require_login();
 if (! (isset($_POST["user"]) && 
   isset($_POST["user"]["id"]) && 
   isset($_POST["user"]["name"]) && 
-  isset($_POST["user"]["email"]))) {
+  isset($_POST["user"]["email"]) && 
+  isset($_POST["token"]) &&
+  $_SESSION["token"] == $_POST["token"])) {
 
     header("Location: index.php");
     exit();
