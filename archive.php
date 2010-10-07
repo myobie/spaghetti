@@ -7,7 +7,9 @@ $posts_result = $db->query("select * from posts order by id DESC");
 function comments_count($post_id) {
   global $db;
 
-  $result = $db->query("select count(*) as count from comments where post_id = '$post_id'");
+  $post_id_e = $db->real_escape_string($post_id);
+
+  $result = $db->query("select count(*) as count from comments where post_id = '$post_id_e'");
   $row = $result->fetch_assoc();
   return $row["count"];
 }

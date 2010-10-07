@@ -3,14 +3,16 @@
 require_once("lib/db.php");
 session_start();
 
-$post_id = $_GET["id"];
+$post_id = $db->real_escape_string($_GET["id"]);
 $post_result = $db->query("select * from posts where id = '$post_id'");
 $post = $post_result->fetch_assoc();
 
 function comments_result($post_id) {
   global $db;
 
-  return $db->query("select * from comments where post_id = '$post_id'");
+  $post_id_e = $db->real_escape_string($post_id);
+
+  return $db->query("select * from comments where post_id = '$post_id_e'");
 }
 
 ?>
