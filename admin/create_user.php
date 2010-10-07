@@ -18,12 +18,12 @@ if (! (isset($_POST["user"]) &&
 
 }
 
-$name = $_POST["user"]["name"];
-$email = $_POST["user"]["email"];
-$password = $_POST["user"]["password"];
-$salt = md5(date(DATE_ATOM) . $email);
+$name = $db->real_escape_string($_POST["user"]["name"]);
+$email = $db->real_escape_string($_POST["user"]["email"]);
+$password = $db->real_escape_string($_POST["user"]["password"]);
+$salt = md5(date(DATE_ATOM) . $email . "--my-secret--");
 
-$result = $db->query("insert into users set name = '$name', 
+$db->query("insert into users set name = '$name', 
   email = '$email', 
   password = '$password',
   salt = '$salt'");
