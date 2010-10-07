@@ -1,9 +1,9 @@
-<!doctype html>
 <?php
 
 require_once("../lib/db.php");
 
 ?>
+<!doctype html>
 <html>
   <head>
     <title>Login - The Blog</title>

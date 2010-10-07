@@ -1,4 +1,3 @@
-<!doctype html>
 <?php
 
 require_once("lib/db.php");
@@ -14,6 +13,7 @@ function comments_count($post_id) {
 }
 
 ?>
+<!doctype html>
 <html>
   <head>
     <title>The Blog</title>
