@@ -30,6 +30,8 @@ $post = $post_result->fetch_assoc();
 
     <section id="edit_post">
       <form action="update_post.php" method="post">
+        <?php $_SESSION["token"] = $token = md5(date(DATE_ATOM)) ?>
+        <input type="hidden" name="token" value="<?php echo $token ?>">
         <h1>Editing <?php echo $post["title"] ?> (#<?php echo $post["id"] ?>)</h1>
         <?php if (isset($_GET["updated"])) { ?>
           <p>Updated successfully.</p>
@@ -52,6 +54,8 @@ $post = $post_result->fetch_assoc();
     <hr>
     <section id="delete_post">
       <form action="delete_post.php" method="post" id="delete_form">
+        <?php $_SESSION["token"] = $token = md5(date(DATE_ATOM)) ?>
+        <input type="hidden" name="token" value="<?php echo $token ?>">
         <input type="hidden" name="id" value="<?php echo $post["id"] ?>">
         <button type="submit">Delete this post</button>
       </form>

@@ -11,7 +11,9 @@ if (! (isset($_POST["post"]) &&
   isset($_POST["post"]["id"]) && 
   isset($_POST["post"]["user_id"]) && 
   isset($_POST["post"]["title"]) && 
-  isset($_POST["post"]["body"]))) {
+  isset($_POST["post"]["body"]) && 
+  isset($_POST["token"]) &&
+  $_SESSION["token"] == $_POST["token"])) {
 
     header("Location: index.php");
     exit();
