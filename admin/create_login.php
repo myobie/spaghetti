@@ -8,14 +8,6 @@ function reload_login_form() {
 
 session_start();
 
-var_dump($_SESSION["token"]);
-var_dump($_POST["token"]);
-
-var_dump((isset($_POST["email"]) && 
-  isset($_POST["password"]) && 
-  isset($_POST["token"]) &&
-  $_SESSION["token"] == $_POST["token"]));
-
 // Validation
 if (! (isset($_POST["email"]) && 
   isset($_POST["password"]) && 
