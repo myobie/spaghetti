@@ -12,7 +12,9 @@ if (! (isset($_POST["comment"]) &&
   isset($_POST["comment"]["post_id"]) && 
   isset($_POST["comment"]["name"]) && 
   isset($_POST["comment"]["email"]) && 
-  isset($_POST["comment"]["body"]))) {
+  isset($_POST["comment"]["body"]) && 
+  isset($_POST["token"]) &&
+  $_SESSION["token"] == $_POST["token"])) {
 
     header("Location: index.php");
     exit();
